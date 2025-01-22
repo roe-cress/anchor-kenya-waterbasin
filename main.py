@@ -127,7 +127,7 @@ with col1:
         use_this_df = sort_table(order_by=table_ordering, input_df=use_this_df)
 
 
-    innercol_left, innercol_right = st.columns(2)
+    innercol_left, innercol_right = st.columns([3,2])
     with innercol_left:
         shapefile= gpd.read_file('WRA_SubBasins_v2_added_variables.shp')
         shapefile = shapefile.merge(weighted_df, on='Basin_ID2')
@@ -157,6 +157,7 @@ with col1:
                         "Basin ID",
                     ),
                     "Overall_score": st.column_config.ProgressColumn(
+                        'Overall score',
                         help='To sort this column, click at the top of the column to adjust whther it is sorted in ascending or descending order',
                         min_value=0,
                         max_value=100,
@@ -165,5 +166,4 @@ with col1:
                      hide_index=True, use_container_width=True
                      
                  )
-
 
